@@ -5,6 +5,7 @@ This module contains the tool of collective.recipe.funkload
 import os
 from setuptools import setup, find_packages
 
+
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
@@ -25,14 +26,15 @@ long_description = (
     'Download\n'
     '********\n')
 
-tests_require=['zope.testing', 'zc.buildout']
+tests_require = ['zope.testing', 'zc.buildout']
 
 setup(name='collective.recipe.funkload',
       version=version,
       description="Makes installing funkload, running tests and generating "
         "reports a 'no-brainer'",
       long_description=long_description,
-      # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
+      # Get more strings
+      # from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         'Framework :: Buildout',
         'Intended Audience :: Developers',
@@ -46,7 +48,7 @@ setup(name='collective.recipe.funkload',
       url='http://pypi.python.org/pypi/collective.recipe.funkload',
       license='ZPL',
       packages=find_packages('src', exclude=['ez_setup']),
-      package_dir = {'':'src'},
+      package_dir={'': 'src'},
       namespace_packages=['collective', 'collective.recipe'],
       include_package_data=True,
       zip_safe=False,
@@ -57,9 +59,11 @@ setup(name='collective.recipe.funkload',
                         ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
-      test_suite = 'collective.recipe.funkload.tests.test_docs.test_suite',
+      test_suite='collective.recipe.funkload.tests.test_docs.test_suite',
       entry_points={
-           'console_scripts': ['funkload = collective.recipe.funkload.dispatcher:main'],
-           'zc.buildout': ['default = collective.recipe.funkload:TestRunner'],
+           'console_scripts':
+                ['funkload = collective.recipe.funkload.dispatcher:main'],
+           'zc.buildout':
+                ['default = collective.recipe.funkload:TestRunner'],
            },
       )

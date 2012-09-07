@@ -6,6 +6,7 @@ $Id: $
 import unittest
 from collective.funkload import testcase
 
+
 class Simple(testcase.FLTestCase):
     """XXX
 
@@ -18,16 +19,15 @@ class Simple(testcase.FLTestCase):
         self.server_url = self.conf_get('main', 'url')
 
     def test_complex(self):
+        # TODO never used
         server_url = self.server_url
         self.get("http://plone.org/",
             description="Visit plone.org")
 
-
-        # end of test -----------------------------------------------
-
     def tearDown(self):
         """Setting up test."""
         self.logd("tearDown.\n")
+
 
 def test_suite():
     return unittest.makeSuite(Simple)

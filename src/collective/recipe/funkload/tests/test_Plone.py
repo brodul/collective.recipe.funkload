@@ -6,6 +6,7 @@ $Id: $
 import unittest
 from collective.funkload import testcase
 
+
 class Plone(testcase.PloneFLTestCase):
     """XXX
 
@@ -18,12 +19,13 @@ class Plone(testcase.PloneFLTestCase):
         self.server_url = self.conf_get('main', 'url')
 
     def test_addContent(self):
-       
+
         server_url = self.server_url
         self.plone_login(server_url, 'admin', 'admin', 'Login to portal')
+        # TODO never used
         document_id = self.addContent(
-                        server_url, 
-                        portal_type='Document', 
+                        server_url,
+                        portal_type='Document',
                         params=[['id', 'id'],
                                 ['title', 'testing title'],
                                 ['description', 'testing description'],
@@ -35,18 +37,15 @@ class Plone(testcase.PloneFLTestCase):
                                 ['language', ''],
                                 ['form.submitted', '1'],
                                 ['last_referer', ''],
-                                ['form_submit', 'Save']], 
+                                ['form_submit', 'Save']],
                         description='Create document')
 
-
         self.get(server_url, description="Visit plone.org")
-
-
-        # end of test -----------------------------------------------
 
     def tearDown(self):
         """Setting up test."""
         self.logd("tearDown.\n")
+
 
 def test_suite():
     return unittest.makeSuite(Plone)
